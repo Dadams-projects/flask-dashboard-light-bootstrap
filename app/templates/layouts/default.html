@@ -7,16 +7,13 @@
     <link rel="icon" type="image/png" href="/static/assets/img/favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    {% if title %}    
-        <title>{{ title }}</title>
-    {% else %}
-        <title>Flask Dashboard Argon - Admin Dashboard with Argon Design | AppSeed</title>
-    {% endif %}
+
+    <title>Human Energy</title>
 
     {% if description %}    
         <meta name="description" content="{{ description }}">
     {% else %}
-        <meta name="description" content="Admin Panel with Argon Design crafted by Creative-Tim and coded in Flask  with SQLite database, ORM and authentication.">
+        <meta name="description" content="DashBoard for the Human Energy App">
     {% endif %}
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
@@ -46,7 +43,7 @@
 
             {{ content | safe }}
 
-            {% include 'includes/footer.html' %}
+            <!-- {% include 'includes/footer.html' %} -->
     
         </div>
 
