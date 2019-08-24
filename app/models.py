@@ -17,6 +17,32 @@ class User(UserMixin, db.Model):
     user     = db.Column(db.String(64),  unique = True)
     email    = db.Column(db.String(120), unique = True)
     password = db.Column(db.String(500))
+    # energy figures
+    today_energy = db.Column(db.Integer)
+    week_energy = db.Column(db.Integer)
+    month_energy = db.Column(db.Integer)
+
+    # driving figures
+    week_drive = db.Column(db.Integer)
+    month_drive = db.Column(db.Integer)
+    year_drive = db.Column(db.Integer)
+
+    # public transport figures
+
+    week_pt = db.Column(db.Integer)
+    month_pt = db.Column(db.Integer)
+    year_pt = db.Column(db.Integer)
+    
+    # eat out figures
+
+    week_eat = db.Column(db.Integer)
+    month_eat = db.Column(db.Integer)
+    year_eat = db.Column(db.Integer)
+
+    
+
+
+
 
     def __init__(self, user, email, password):
         self.user       = user

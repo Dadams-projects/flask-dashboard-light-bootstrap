@@ -25,54 +25,7 @@ def load_user(user_id):
 @app.route('/logout.html')
 def logout():
     logout_user()
-    return redirect(url_for('index'))
-
-# register user
-@app.route('/register.html', methods=['GET', 'POST'])
-def register():
-    
-    # declare the Registration Form
-    form = RegisterForm(request.form)
-
-    msg = None
-
-    if request.method == 'GET': 
-
-        return render_template('layouts/default.html',
-                                content=render_template( 'pages/register.html', form=form, msg=msg ) )
-
-    # check if both http method is POST and form is valid on submit
-    if form.validate_on_submit():
-
-        # assign form data to variables
-        username = request.form.get('username', '', type=str)
-        password = request.form.get('password', '', type=str) 
-        email    = request.form.get('email'   , '', type=str) 
-
-        # filter User out of database through username
-        user = User.query.filter_by(user=username).first()
-
-        # filter User out of database through username
-        user_by_email = User.query.filter_by(email=email).first()
-
-        if user or user_by_email:
-            msg = 'Error: User exists!'
-        
-        else:         
-
-            pw_hash = password #bc.generate_password_hash(password)
-
-            user = User(username, email, pw_hash)
-
-            user.save()
-
-            msg = 'User created, please <a href="' + url_for('login') + '">login</a>'     
-
-    else:
-        msg = 'Input error'     
-
-    return render_template('layouts/default.html',
-                            content=render_template( 'pages/register.html', form=form, msg=msg ) )
+    return redirect(url_for('login'))
 
 # authenticate user
 @app.route('/login.html', methods=['GET', 'POST'])
@@ -103,12 +56,13 @@ def login():
             else:
                 msg = "Wrong password. Please try again."
         else:
-            msg = "Unkkown user"
+            msg = "Unknown user"
 
     return render_template('layouts/default.html',
                             content=render_template( 'pages/login.html', form=form, msg=msg ) )
 
 # Render the user page
+
 @app.route('/user.html')
 def user():
 

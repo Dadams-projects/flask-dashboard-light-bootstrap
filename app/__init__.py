@@ -25,7 +25,7 @@ app.config.from_object('app.configuration.Config')
 db = SQLAlchemy  (app) # flask-sqlalchemy
 bc = Bcrypt      (app) # flask-bcrypt
 
-lm = LoginManager(   ) # flask-loginmanager
-lm.init_app(app) # init the login manager
+lm = LoginManager(app)
+lm.login_view = 'login'
 
 from app import views, models
